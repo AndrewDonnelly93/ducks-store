@@ -1,6 +1,6 @@
 .catalog-items {
   z-index: 2;
-  display: block;
+  display: inline-block;
   float: none;
   clear: left; }
   .catalog-items li {

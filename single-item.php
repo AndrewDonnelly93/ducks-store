@@ -37,7 +37,7 @@ if(isset($_GET["id"])) {
 				<div class="column column6">
 					<!-- галерея картинок -->
 					<div class="item-gallery">
-						<img src="img/item.jpeg" alt="уточка">
+						<img src="<?=$products[$i][4];?>" alt="уточка">
 						<div class="small-images">
 							<img src="img/item.jpeg" alt="уточка">
 							<img src="img/item.jpeg" alt="уточка">

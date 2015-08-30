@@ -1,12 +1,12 @@
 <?php
 
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
+if (isset($_GET['view'])) {
+    $view = $_GET['view'];
 } else {
-    $page = 'main';
+    $view = 'main';
 }
 
-switch ($page) {
+switch ($view) {
     case 'main':
         include_once 'main.php';
         break;

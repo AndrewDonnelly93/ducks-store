@@ -123,6 +123,7 @@ aside a{
 }
 .item-block img{
 	width: 200px;
+    height: 133px;
 	margin-bottom: 10px;
 }
 .btn-basket{
@@ -219,6 +220,7 @@ main,section{
 }
 .item-gallery>img{
 	width: 100%;
+    height: 213px;
 	margin-bottom: 10px;
 }
 .small-images img{
