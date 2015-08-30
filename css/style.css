@@ -255,3 +255,36 @@ footer{
 	color: #fff;
 	padding: 20px 0;
 }
+
+ .catalog-items li {
+     display: inline-block;
+     margin-right: 10px;
+     width: 30px;
+     height: 30px;
+     line-height: 29px;
+     text-align: center;
+     background: yellow;
+     color: blue; }
+ .catalog-items li a {
+     text-decoration: none;
+     display: block;
+     color: blue;
+     width: 30px;
+     height: 30px; }
+ .catalog-items li.current {
+     background: green;
+     color: white; }
+
+ .btn {
+     z-index: 2;
+     display: inline-block;
+     text-decoration: none;
+     background: yellow;
+     color: blue;
+     padding-left: 10px;
+     padding-right: 10px;
+     height: 30px;
+     line-height: 29px; }
+
+ .add-item {
+     margin-top: 10px; }

@@ -9,14 +9,19 @@ $uploadfile = $uploaddir.basename($userfile);
 if (!(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))) {
     $uploadfile = $uploaddir."item.jpeg";
 }
+$item_info = [$id,$item_name,$item_description,$item_price,$uploadfile];
 $data_file = "./data/products.csv";
-if (($handler = fopen($data_file,"a+")) === false) {
+if (($handler = fopen($data_file,"r")) === false) {
     echo "Error while opening file";
 } else {
-    $stringCount = sizeof(file($data_file));
-    $item_info = [$stringCount,$item_name,$item_description,$item_price,$uploadfile];
-    fputcsv($handler,$item_info,";");
+    $dataArray = file($data_file);
     fclose($handler);
-    echo "Товар добавлен в каталог";
+    $handler = fopen($data_file,"w+");
+    $dataArray[$id] = implode($item_info,";");
+    $dataArray[$id] .= "\n";
+    foreach ($dataArray as $product) {
+        fwrite($handler,$product,1000);
+    }
+    fclose($handler);
+    echo "Товар изменен";
 }
-

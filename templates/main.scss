@@ -1,6 +1,6 @@
 .catalog-items {
         z-index: 2;
-        display: inline-block;
+        display: block;
         float: none;
         clear: left;
     li {
@@ -13,6 +13,7 @@
         background: yellow;
         color: blue;
         a {
+            text-decoration: none;
             display: block;
             color: blue;
             width: 30px;
@@ -23,4 +24,21 @@
             color: white;
         }
     }
+}
+
+.btn {
+     z-index: 2;
+     display: inline-block;
+     text-decoration: none;
+     background: yellow;
+     color: blue;
+     padding-left: 10px;
+     padding-right: 10px;
+     height: 30px;
+     line-height: 29px;
+}
+
+.add-item {
+    margin-top: 10px;
+
 }

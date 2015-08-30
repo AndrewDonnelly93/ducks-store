@@ -55,6 +55,7 @@ if(isset($_GET["id"])) {
 					<div class="order-btns">
 						<a href="" class="btn-basket">В Корзину</a>
 						<a href="" class="btn-click">Купить в 1 клик</a>
+                        <a href="index.php?view=edit-item&id=<?=$i?>" class="btn redact" style="margin-top: 10px">Редактировать</a>
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,7 @@
 id;title;description;price;img-source
-1;маленькая желтая уточка 1;она маленькая;100;data/uploads/item.jpeg
-2;маленькая желтая уточка 2;она маленькая;102;data/uploads/item.jpeg
-3;маленькая желтая уточка 3;она маленькая;104;data/uploads/item.jpeg
-4;маленькая желтая уточка 3;она маленькая;104;data/uploads/item.jpeg
+1;маленькая желтая уточка 1;она маленькая, красивая;105;data/uploads/images.jpg
+2;маленькая желтая уточка 2;она маленькая, симпатичная;102;data/uploads/banner.jpeg
+3;маленькая желтая уточка 3;она маленькая и желтая;104;data/uploads/item.jpeg
 4;маленькая желтая уточка 4;она маленькая;102;data/uploads/item.jpeg
 5;маленькая желтая уточка 5;она маленькая;104;data/uploads/item.jpeg
 6;маленькая желтая уточка 6;она маленькая;104;data/uploads/item.jpeg
@@ -14,3 +13,5 @@ id;title;description;price;img-source
 12;маленькая желтая уточка 12;она маленькая;108;data/uploads/item.jpeg
 13;маленькая желтая уточка 13;она маленькая;110;data/uploads/item.jpeg
 14;"маленькая желтая уточка 14";"маленькая утка";112;data/uploads/IMG_8456_Fotor.jpg
+15;"маленькая желтая уточка 15";"маленькая, желтая";34;data/uploads/IMG_8456_Fotor.jpg
+16;"маленькая желтая уточка 16";симпатичная;55;data/uploads/bolsie-predmety-3.jpg

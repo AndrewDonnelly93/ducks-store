@@ -20,6 +20,9 @@ include_once __DIR__ . '/templates/_form_shop_items.php';
 				<?php
                     include_once __DIR__ . '/templates/_pagination.php';
                 ?>
+                    <div class="div">
+                    <a class="add-item btn" href="add-item.php">Добавить товар</a>
+                    </div>
 				</div>
 			</div>
 		</div>
