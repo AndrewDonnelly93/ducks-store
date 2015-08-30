@@ -1,0 +1,26 @@
+.catalog-items {
+    z-index: 2;
+        display: block;
+        float: none;
+        clear: left;
+    li {
+        display : inline-block;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        line-height: 29px;
+        text-align: center;
+        background: yellow;
+        color: blue;
+        a {
+            display: block;
+            color: blue;
+            width: 30px;
+            height: 30px;
+        }
+        &.current {
+            background: green;
+            color: white;
+        }
+    }
+}
