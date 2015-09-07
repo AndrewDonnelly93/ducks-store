@@ -3,7 +3,7 @@ include_once __DIR__ . '/templates/_header.php';
 include_once __DIR__ . '/templates/_top_menu.php';
 include_once __DIR__ . '/templates/_form_shop_items.php';
 
-$flag = (isset($_GET["id"])&&($_GET["id"] < count($products)));
+$flag = (isset($_GET["id"])&&($_GET["id"] < count($products))&&(is_numeric($_GET["id"])));
 if ($flag) {
     $i = $_GET["id"];
 }
