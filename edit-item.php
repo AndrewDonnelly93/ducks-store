@@ -20,7 +20,7 @@ include_once __DIR__ . '/templates/_form_shop_items.php';
                             <?php
                             include_once __DIR__ . '/templates/_edit-form.php';
                             if (!empty($_POST)) {
-                                include_once __DIR__ . '/templates/_edit-item.php';
+                                include_once __DIR__ . '/data-manipulation/_edit-item.php';
                             }
                             ?>
                         </div>
