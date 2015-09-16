@@ -1,7 +1,8 @@
 <?php
 $id = $_GET["id"];
-include_once $src_path.'utilities/db.php';
-$getProdInfo = $connection->prepare('SELECT * FROM `products` WHERE `id` = '.$id);
+include_once $src_path . 'autoload.php';
+$connection = new \App\DB\Connection('root', '');
+$getProdInfo = $connection->connection->prepare('SELECT * FROM `products` WHERE `id` = '.$id);
 $getProdInfo->execute();
 $product = $getProdInfo->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -30,4 +31,17 @@ $product = $getProdInfo->fetch(PDO::FETCH_ASSOC);
     <input type="submit" value="Отправить">
 </form>
 
+
 <a class="btn" href="admin.php?view=catalog" style="margin-right: 20px">В каталог</a>
+
+<script>
+    /*document.addEventListener("DOMContentLoaded", function(event) {
+        console.log(document.querySelectorAll(".edited").length);
+
+        if (document.querySelectorAll(".edited").length) {
+            if(window.location.href.substr(-2) !== "?r") {
+                window.location = window.location.href + "?r";
+            }
+        }
+    });*/
+</script>

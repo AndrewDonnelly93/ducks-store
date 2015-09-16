@@ -3,7 +3,7 @@ $src_path = __DIR__ . '/../src/';
 include_once $src_path . "/utilities/db.php";
 include_once $src_path . "/templates/_add-category.php";
 if (!empty($_POST)) {
-    $cat_stmt = $connection->prepare('SELECT `title` FROM `categories`');
+    $cat_stmt = $connection->connection->prepare('SELECT `title` FROM `categories`');
     $cat_stmt->execute();
     $categories = $cat_stmt->fetchAll(PDO::FETCH_ASSOC);
     $new_cat = $_POST['category'];
@@ -15,7 +15,7 @@ if (!empty($_POST)) {
         }
     }
     if (!$flag) {
-        $addCat = $connection->prepare('INSERT INTO `categories`'.
+        $addCat = $connection->connection->prepare('INSERT INTO `categories`'.
                                         '(`title`)'.
                                         'VALUES (:title)');
         $result = $addCat->execute(['title' => $new_cat]);

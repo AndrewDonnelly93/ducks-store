@@ -1,7 +1,9 @@
 <?php
 $src_path = __DIR__ . '/../src/';
-include_once $src_path . 'utilities/db.php';
-$categories = get_categories($connection);
+include_once $src_path . 'utilities/url.php';
+include_once $src_path . 'autoload.php';
+$connection = new \App\DB\Connection('root', '');
+$categories = $connection->getCategories();
 
 if (isset($_GET['view'])) {
     $view = $_GET['view'];

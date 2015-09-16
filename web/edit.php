@@ -1,15 +1,15 @@
 <?php
 $src_path = __DIR__."/../src/";
-include_once $src_path.'utilities/db.php';
+include_once $src_path.'autoload.php';
 
 function updatePhoto($uploadfile,$connection,$id) {
-    $stmt = $connection->prepare('SELECT `id`,`photo` FROM `images`');
+    $stmt = $connection->connection->prepare('SELECT `id`,`photo` FROM `images`');
     $stmt->execute();
     $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $uploadImageTable = $connection->prepare('INSERT INTO `images`'.
-        '(`photo`)'.
-        ' VALUES (:photo)');
-    $uploadProducts = $connection->prepare('UPDATE `products` SET `image_id` = :id WHERE `id` ='.$id);
+    $uploadImageTable = $connection->connection->prepare('INSERT INTO `images`'.
+        '(`photo`,`created_at`)'.
+        ' VALUES (:photo, :created_at)');
+    $uploadProducts = $connection->connection->prepare('UPDATE `products` SET `image_id` = :id WHERE `id` ='.$id);
     $flag = false;
 
     foreach ($images as $image) {
@@ -23,11 +23,14 @@ function updatePhoto($uploadfile,$connection,$id) {
         }
     }
     if (!$flag) {
+        $now = new DateTime();
+        $date = $now->format("Y-m-d H:i:s");
         // Если не нашли, обновляем две таблицы - заносим новый файл к изображениям и информацию об его ID в продукты
         $uploadImageTable->execute([
-            'photo' => $uploadfile
+            'photo' => $uploadfile,
+            'created_at' => $date
         ]);
-        $get_image_id = $connection->prepare('SELECT `id` FROM `images` WHERE `id` = (SELECT MAX(`id`) FROM `images`)');
+        $get_image_id = $connection->connection->prepare('SELECT `id` FROM `images` WHERE `id` = (SELECT MAX(`id`) FROM `images`)');
         $get_image_id->execute();
         $image_id = $get_image_id->fetch(PDO::FETCH_ASSOC);
         $image_id = $image_id['id'];
@@ -47,7 +50,7 @@ if (!is_numeric($id)) {
     echo "Введите ID в корректном формате";
     echo "<a href=admin.php class=btn>В каталог</a>";
 } else {
-    $isProdExists = $connection->prepare('SELECT `id` FROM `products` WHERE `id` = '.$id);
+    $isProdExists = $connection->connection->prepare('SELECT `id` FROM `products` WHERE `id` = '.$id);
     if ($isProdExists->execute()) {
         include_once $src_path . "templates/_edit-form.php";
     } else {
@@ -58,24 +61,30 @@ if (!is_numeric($id)) {
 
 if (!empty($_POST)) {
     if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['category'])) {
+        $now = new DateTime();
+        $date = $now->format("Y-m-d H:i:s");
         try {
-            $stmt = $connection->prepare(
+            $stmt = $connection->connection->prepare(
                 'UPDATE `products`
                 SET `title` = :title,
                 `description` = :description,
                 `price` = :price,
-                `category_id` = :category
-                WHERE id = :id'
+                `category_id` = :category,
+                `updated_at` = :updated_at
+                WHERE `id` = :id'
             );
             $result = $stmt->execute([
                 'title' => $_POST['title'],
                 'description' => $_POST['description'],
                 'price' => $_POST['price'],
                 'category' => $_POST['category'],
+                'updated_at' => $date,
                 'id' => $id
             ]);
             if ($result) {
-                echo "Товар изменен";
+                //header('location:' . $_SERVER['REQUEST_URI'] );
+                echo "<p class=edited>Товар изменен</p>".$date;
+                header("Refresh:2");
             } else {
                 echo "Ошибка. Товар не изменен";
             }
