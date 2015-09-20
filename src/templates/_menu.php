@@ -2,10 +2,12 @@
 	<h2>Каталог</h2>
 	<ul>
         <?php
-        foreach($categories as $category){
-            echo "<li><a href='index.php?view=category&id="
-                .$category['id']."'>"
-                .$category['title']."</a></li>";
+        foreach($categories as $_category){
+            echo "<li><a href='"
+                .\App\Utilities\Options::URL
+                ."/category/?id="
+                .$_category['id']."'>"
+                .$_category['title']."</a></li>";
         }
         ?>
 	</ul>

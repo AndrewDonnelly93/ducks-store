@@ -1,7 +1,7 @@
 <?php
 namespace App\DB;
 class Connection {
-    public $connection;
+    private $connection;
     public function __construct($username,$password) {
         try {
             $this->connection = new \PDO(
@@ -14,9 +14,7 @@ class Connection {
             die($e->getMessage());
         }
     }
-    public function getCategories() {
-        $cat_stmt = $this->connection->prepare("SELECT * FROM `categories`");
-        $cat_stmt->execute();
-        return $cat_stmt->fetchAll(\PDO::FETCH_ASSOC);
+    public function prepare($sql) {
+        return $this->connection->prepare($sql);
     }
 }

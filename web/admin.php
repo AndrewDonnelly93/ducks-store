@@ -1,9 +1,14 @@
 <?php
 $src_path = __DIR__ . '/../src/';
-include_once $src_path . 'utilities/url.php';
+
 include_once $src_path . 'autoload.php';
+session_start();
+
 $connection = new \App\DB\Connection('root', '');
-$categories = $connection->getCategories();
+$urler = new \App\Utilities\Url();
+$view = $urler->getPage();
+
+$categories = \App\DB\Categories::getAll($connection);
 
 if (isset($_GET['view'])) {
     $view = $_GET['view'];

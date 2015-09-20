@@ -1,15 +1,16 @@
 <?php
 $src_path = __DIR__."/../src/";
 include_once $src_path.'autoload.php';
+/*<a href="index.php?view=single-item&id=<?=$products[$i]['id']?>" class="item" title="<?=$products[$i]['title'];?>">*/
 
 function updatePhoto($uploadfile,$connection,$id) {
-    $stmt = $connection->connection->prepare('SELECT `id`,`photo` FROM `images`');
+    $stmt = $connection->prepare('SELECT `id`,`photo` FROM `images`');
     $stmt->execute();
     $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $uploadImageTable = $connection->connection->prepare('INSERT INTO `images`'.
+    $uploadImageTable = $connection->prepare('INSERT INTO `images`'.
         '(`photo`,`created_at`)'.
         ' VALUES (:photo, :created_at)');
-    $uploadProducts = $connection->connection->prepare('UPDATE `products` SET `image_id` = :id WHERE `id` ='.$id);
+    $uploadProducts = $connection->prepare('UPDATE `products` SET `image_id` = :id WHERE `id` ='.$id);
     $flag = false;
 
     foreach ($images as $image) {
@@ -30,7 +31,7 @@ function updatePhoto($uploadfile,$connection,$id) {
             'photo' => $uploadfile,
             'created_at' => $date
         ]);
-        $get_image_id = $connection->connection->prepare('SELECT `id` FROM `images` WHERE `id` = (SELECT MAX(`id`) FROM `images`)');
+        $get_image_id = $connection->prepare('SELECT `id` FROM `images` WHERE `id` = (SELECT MAX(`id`) FROM `images`)');
         $get_image_id->execute();
         $image_id = $get_image_id->fetch(PDO::FETCH_ASSOC);
         $image_id = $image_id['id'];
@@ -50,7 +51,7 @@ if (!is_numeric($id)) {
     echo "Введите ID в корректном формате";
     echo "<a href=admin.php class=btn>В каталог</a>";
 } else {
-    $isProdExists = $connection->connection->prepare('SELECT `id` FROM `products` WHERE `id` = '.$id);
+    $isProdExists = $connection->prepare('SELECT `id` FROM `products` WHERE `id` = '.$id);
     if ($isProdExists->execute()) {
         include_once $src_path . "templates/_edit-form.php";
     } else {
@@ -64,7 +65,7 @@ if (!empty($_POST)) {
         $now = new DateTime();
         $date = $now->format("Y-m-d H:i:s");
         try {
-            $stmt = $connection->connection->prepare(
+            $stmt = $connection->prepare(
                 'UPDATE `products`
                 SET `title` = :title,
                 `description` = :description,

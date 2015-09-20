@@ -11,5 +11,12 @@
 				<li><a href="">Контакты</a></li>
 			</ul>
 		</nav>
+        <div>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                вы зашли как пользователь
+            <?php else: ?>
+                <a href="<?= \App\Utilities\Options::URL .'/login' ?>">войти</a>
+            <?php endif; ?>
+        </div>
 	</div>
 </header>
