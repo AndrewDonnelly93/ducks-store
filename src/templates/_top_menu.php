@@ -12,11 +12,16 @@
 			</ul>
 		</nav>
         <div>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                вы зашли как пользователь
-            <?php else: ?>
-                <a href="<?= \App\Utilities\Options::URL .'/login' ?>">войти</a>
-            <?php endif; ?>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "вы зашли как пользователь<br>";
+                echo "<a class=user-link href=".\App\Utilities\Options::URL."/cart"."/>Корзина</a>";
+                echo "<a class=user-link href=".\App\Utilities\Options::URL."/orders"."/>Заказы</a>";
+            }
+             else {
+                 echo "<a href=". \App\Utilities\Options::URL."./login ".">Войти</a >";
+            }
+            ?>
         </div>
 	</div>
 </header>

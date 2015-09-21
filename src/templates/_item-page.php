@@ -10,9 +10,9 @@
         <div class="item-gallery">
            <img src="<?=$product['photo'];?>" alt="уточка">
             <div class="small-images">
-                <img src="img/item.jpeg" alt="уточка">
-                <img src="img/item.jpeg" alt="уточка">
-                <img src="img/item.jpeg" alt="уточка">
+                <img src="<?= \App\Utilities\Options::ASSETS_PATH ?>img/item.jpeg" alt="уточка">
+                <img src="<?= \App\Utilities\Options::ASSETS_PATH ?>img/item.jpeg" alt="уточка">
+                <img src="<?= \App\Utilities\Options::ASSETS_PATH ?>img/item.jpeg" alt="уточка">
             </div>
         </div>
     </div>

@@ -8,14 +8,16 @@ session_start();
 $connection = new \App\DB\Connection('root', '');
 $urler = new \App\Utilities\Url();
 $view = $urler->getPage();
-
 $categories = \App\DB\Categories::getAll($connection);
 
 switch ($view) {
     case 'main':
-        include_once $src_path.'main.php';
+        include_once $src_path . 'main.php';
         break;
     case 'category':
+        include $src_path . 'category.php';
+        break;
+    case 'catalog':
         include $src_path . 'catalog.php';
         break;
     case 'product':
@@ -25,10 +27,13 @@ switch ($view) {
         include $src_path . 'cart_add.php';
         break;
     case 'cart':
-        include $src_path.'cart.php';
+        include $src_path . 'cart.php';
         break;
     case 'login':
-        include $src_path.'login.php';
+        include $src_path . 'login.php';
+        break;
+    case 'orders':
+        include $src_path . 'orders.php';
         break;
     default:
         echo "<h1>Oooops. 404</h1>";

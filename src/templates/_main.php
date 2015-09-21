@@ -8,7 +8,7 @@
                 <div class="catalog">
                     <div class="row clearfix">
                         <?php
-                        include_once __DIR__ . '/_pagination.php';
+                          include_once __DIR__ . '/_pagination.php';
                         ?>
                     </div>
                 </div>

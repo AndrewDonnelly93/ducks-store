@@ -2,7 +2,7 @@
 $id = $_GET["id"];
 include_once $src_path . 'autoload.php';
 $connection = new \App\DB\Connection('root', '');
-$getProdInfo = $connection->connection->prepare('SELECT * FROM `products` WHERE `id` = '.$id);
+$getProdInfo = $connection->prepare('SELECT * FROM `products` WHERE `id` = '.$id);
 $getProdInfo->execute();
 $product = $getProdInfo->fetch(PDO::FETCH_ASSOC);
 ?>
