@@ -20,7 +20,7 @@ CREATE TABLE `categories` (
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 4;
+AUTO_INCREMENT = 7;
 -- ---------------------------------------------------------
 
 
@@ -51,7 +51,34 @@ CREATE TABLE `images` (
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 12;
+AUTO_INCREMENT = 17;
+-- ---------------------------------------------------------
+
+
+-- CREATE TABLE "orders" -----------------------------------
+CREATE TABLE `orders` ( 
+	`order_id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
+	`customer_id` Int( 11 ) NOT NULL, 
+	`cost` Int( 11 ) NOT NULL, 
+	`order_date` DateTime NOT NULL,
+	 PRIMARY KEY ( `order_id` )
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 2;
+-- ---------------------------------------------------------
+
+
+-- CREATE TABLE "ordersproducts" ---------------------------
+CREATE TABLE `ordersproducts` ( 
+	`order_id` Int( 11 ) NOT NULL, 
+	`product_id` Int( 11 ) NOT NULL, 
+	`amount` Int( 11 ) NOT NULL
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB;
 -- ---------------------------------------------------------
 
 
@@ -63,13 +90,14 @@ CREATE TABLE `products` (
 	`price` Double( 7, 2 ) NOT NULL, 
 	`image_id` Int( 11 ) NOT NULL DEFAULT '1', 
 	`created_at` DateTime NULL, 
+	`updated_at` DateTime NOT NULL, 
 	`category_id` Int( 11 ) NULL,
 	 PRIMARY KEY ( `id` )
  )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 42;
+AUTO_INCREMENT = 43;
 -- ---------------------------------------------------------
 
 
@@ -88,8 +116,8 @@ AUTO_INCREMENT = 1;
 
 
 -- Dump data of "categories" -------------------------------
-INSERT INTO `categories`(`id`,`title`) VALUES ( '1', 'Желтые утки' );
-INSERT INTO `categories`(`id`,`title`) VALUES ( '2', 'Китайские утки' );
+INSERT INTO `categories`(`id`,`title`) VALUES ( '1', 'Азиатские утки' );
+INSERT INTO `categories`(`id`,`title`) VALUES ( '2', 'Европейские утки' );
 INSERT INTO `categories`(`id`,`title`) VALUES ( '3', 'Резиновые утки' );
 INSERT INTO `categories`(`id`,`title`) VALUES ( '4', 'Российские утки' );
 INSERT INTO `categories`(`id`,`title`) VALUES ( '5', 'Английские утки' );
@@ -110,20 +138,39 @@ INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '8', '../d
 INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '9', '../data/uploads/1835_03.jpg', NULL, NULL );
 INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '10', '../data/uploads/3c816dbadc88529e54feae4e89cf5cca.jpg', NULL, NULL );
 INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '11', '../data/uploads/14247673513059.jpg', NULL, NULL );
+INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '12', '../data/uploads/Duck08ad.jpg', NULL, NULL );
+INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '13', '../data/uploads/images.jpg', NULL, NULL );
+INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '14', '../data/uploads/(266)soldier rubber duck dark camo.jpg', NULL, NULL );
+INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '15', '../data/uploads/images (1).jpg', '0000-00-00 00:00:00', NULL );
+INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '16', '../data/uploads/rubberDuck.jpg', '2015-09-16 19:38:33', NULL );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "orders" -----------------------------------
+INSERT INTO `orders`(`order_id`,`customer_id`,`cost`,`order_date`) VALUES ( '1', '1', '104', '2015-09-20 22:22:49' );
+INSERT INTO `orders`(`order_id`,`customer_id`,`cost`,`order_date`) VALUES ( '2', '1', '210', '2015-09-21 14:55:40' );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "ordersproducts" ---------------------------
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '1', '3', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '2', '2', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '2', '3', '1' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "products" ---------------------------------
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '2', 'маленькая желтая уточка 21', 'она маленькая и резиновая (edited)  ', '106.00', '9', '2015-09-08 10:56:29', '2' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '3', 'маленькая желтая уточка 14', 'она маленькая и желтая (edited)', '104.00', '1', '2015-09-08 10:56:29', '2' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '4', 'маленькая желтая уточка 6', 'она маленькая ', '103.00', '1', '2015-09-08 10:56:29', '1' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '6', 'маленькая желтая уточка 6', 'маленькая, желтая', '106.00', '2', '2015-09-08 10:56:29', '2' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '24', 'маленькая желтая уточка 7', 'она маленькая', '105.00', '1', NULL, '1' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '35', 'маленькая желтая уточка 11', 'она маленькая', '123.00', '1', NULL, '2' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '36', 'маленькая желтая уточка 11', 'она маленькая', '123.00', '9', NULL, '2' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '38', 'маленькая желтая уточка 112', 'она желтая', '105.00', '10', NULL, '1' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '40', 'маленькая желтая уточка 9', 'она маленькая', '123.00', '11', NULL, '1' );
-INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`category_id`) VALUES ( '41', 'маленькая желтая уточка 16', 'она большая', '302.00', '8', NULL, '1' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '2', 'маленькая желтая уточка 25', 'она маленькая и резиновая (edited-8)                ', '106.00', '16', '2015-09-08 10:56:29', '2015-09-16 20:32:01', '4' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '3', 'маленькая желтая уточка 18', 'она маленькая и желтая (edited-3)   ', '104.00', '14', '2015-09-08 10:56:29', '2015-09-16 19:19:28', '2' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '4', 'маленькая желтая уточка 6', 'она маленькая ', '103.00', '1', '2015-09-08 10:56:29', '0000-00-00 00:00:00', '1' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '6', 'маленькая желтая уточка 6', 'маленькая, желтая', '106.00', '2', '2015-09-08 10:56:29', '0000-00-00 00:00:00', '2' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '24', 'маленькая желтая уточка 7', 'она маленькая ', '107.00', '1', NULL, '2015-09-16 19:41:41', '1' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '35', 'маленькая желтая уточка 11', 'она маленькая', '123.00', '1', NULL, '0000-00-00 00:00:00', '2' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '36', 'маленькая желтая уточка 11', 'она маленькая', '123.00', '9', NULL, '0000-00-00 00:00:00', '2' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '38', 'маленькая желтая уточка 112', 'она желтая', '105.00', '10', NULL, '0000-00-00 00:00:00', '1' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '40', 'маленькая желтая уточка 9', 'она маленькая', '123.00', '11', NULL, '0000-00-00 00:00:00', '1' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '41', 'маленькая желтая уточка 16', 'она большая', '302.00', '8', NULL, '0000-00-00 00:00:00', '1' );
+INSERT INTO `products`(`id`,`title`,`description`,`price`,`image_id`,`created_at`,`updated_at`,`category_id`) VALUES ( '42', 'маленькая уточка 3', 'она маленькая', '104.00', '1', '2015-09-20 16:52:48', '0000-00-00 00:00:00', '5' );
 -- ---------------------------------------------------------
 
 
