@@ -26,7 +26,7 @@ class OrdersProducts extends \App\DB\Orders {
     }
 
     public static function getProductsInOrder(Connection $connection, $order_id) {
-        $stmt = $connection->prepare('SELECT * FROM `orderproducts`
+        $stmt = $connection->prepare('SELECT * FROM `ordersproducts`
             WHERE `order_id` = :order_id');
         $stmt->execute([
             ":order_id" => $order_id

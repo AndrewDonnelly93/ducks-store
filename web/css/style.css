@@ -328,3 +328,11 @@ footer{
      text-decoration: none;
      color: white;
  }
+
+ .product {
+     text-align: center;
+ }
+
+.product-data {
+    text-align: center;
+}
