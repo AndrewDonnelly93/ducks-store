@@ -1,4 +1,5 @@
 <?php
+use \Respect\Validation\Validator as v;
 function nameValidate(&$errors,$name) {
     $nameBlankError = "Вы не заполнили поле ФИО";
     $nameNotValid = "Укажите правильное имя";

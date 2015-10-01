@@ -3,12 +3,17 @@ if (isset($_GET['id'])) {
     $id = $_GET["id"];
 }
 include_once $src_path.'autoload.php';
-$getCatId  = $connection->connection->prepare('SELECT * FROM `categories` WHERE `id` = '.$id);
-$getCatId ->execute();
-$catName = $getCatId->fetch(PDO::FETCH_ASSOC);
+$getCatId  = \App\DB\Categories::get($id,$connection);
 ?>
 
-<form action="admin.php?view=edit_category&id=<?=$id?>" method="post">
-    <input style="width: 50%" type="text" name="category" value="<?=$catName['title']?>" required>
+<form action="<?=App\Utilities\Options::URL?>/edit-cat/?id=<?=$getCatId['id']?>" method="post">
+    <p style="margin-bottom:5px;">Введите название категории:</p>
+    <input style="width: 50%;margin-bottom:5px;" type="text" name="category" value="<?=$getCatId['title']?>" required>
     <input type="submit" value="Отправить">
 </form>
+
+<?php
+if (!empty($getCatId['updated_at']) && ($getCatId['updated_at'] != "0000-00-00 00:00:00")) {
+    echo "<p style='margin-bottom: 5px, margin-top: 10px;'>Название категории изменено: ".$getCatId['updated_at']."</p>";
+}
+?>

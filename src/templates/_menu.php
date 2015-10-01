@@ -11,4 +11,9 @@
         }
         ?>
 	</ul>
+    <?php
+        if (isset($_SESSION['user_id'])) {
+            echo "<a class='adm-btn' href=". \App\Utilities\Options::URL ."../edit-cat-all>Редактировать</a>";
+        }
+    ?>
 </aside>

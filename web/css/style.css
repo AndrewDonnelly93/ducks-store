@@ -518,10 +518,59 @@ label {
 }
 
 .table-products:last-child {
-    border-bottom: 1px solid #fffb93;;
+    border-bottom: 1px solid #fffb93;
 }
 
 .edit-form input[type=submit] {
     margin-top: 5px;
 }
 
+aside a.adm-btn {
+    padding: 0 10px;
+    font-weight: 400;
+    width: auto;
+}
+
+.categories.list {
+    width: 100%;
+    text-align: center;
+}
+
+.categories.list .adm-btn {
+    margin: 0;
+}
+
+.categories.list thead td {
+    border: 1px solid #0ea7c9;
+    height: 25px;
+    line-height: 25px;
+}
+
+.categories.list td:first-child {
+    width: 38px;
+}
+
+.categories.list td:nth-child(2) {
+    width: 343px;
+}
+
+.categories.list td:nth-child(3) {
+    width: 168px;
+}
+
+.categories.list td:nth-child(4) {
+    width: 147px;
+}
+
+.categories.list tbody td {
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #fffb93;
+    border-top: 0;
+}
+
+.categories.list:last-child tbody td {
+    border-bottom: 1px solid #fffb93;
+}

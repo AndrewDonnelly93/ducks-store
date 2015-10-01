@@ -56,6 +56,7 @@ if (!empty($_POST) && isset($_COOKIE['products']) && !empty($_COOKIE['products']
             setcookie("products[{$id}]", "", time() - 3600, "/");
         }
         echo "<p>Поздравляем! Заказ оформлен</p>";
+        header('Refresh:0 url=/');
     } else {
         echo "<div class=order-cost> Общая стоимость заказа: <span>$orderCost</span> рублей</div>";
         include_once "templates/_create-order-form.php";

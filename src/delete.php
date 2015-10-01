@@ -25,14 +25,17 @@ if (isset($_GET['id'])) {
 } else {
     $id = 'error';
 }
-if (!is_numeric($id)) {
-    echo "Введите ID в корректном формате";
+$product = \App\DB\Products::get($id,$connection);
+$flag = v::arr()->notEmpty()->validate($product);
+if (!$flag) {
+    echo "Такого товара не существует";
 } else {
-    $product = \App\DB\Products::get($id,$connection);
-    if (v::arr()->notEmpty()->validate($product)) {
-        $deleteProduct = \App\DB\Products::deleteProduct($id,$connection);
-        // Back to previous page
+    $deleteProduct = \App\DB\Products::deleteProduct($id,$connection);
+    // Back to previous page
+    if(isset($_SERVER['HTTP_REFERER'])) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } else {
+        header('Location: / ');
     }
 }
 ?>

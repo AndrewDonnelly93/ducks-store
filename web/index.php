@@ -27,6 +27,27 @@ switch ($view) {
             echo "<h1>404 Not Found</h1>";
         }
         break;
+    case 'add-cat':
+        if (isset($_SESSION['user_id'])) {
+            include_once $src_path . 'add-cat.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'edit-cat':
+        if (isset($_SESSION['user_id'])) {
+            include_once $src_path . 'edit-cat.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'edit-cat-all':
+        if (isset($_SESSION['user_id'])) {
+            include_once $src_path . 'edit-cat-all.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
     case 'category':
         include $src_path . 'category.php';
         break;
@@ -73,6 +94,13 @@ switch ($view) {
     case 'add':
         if (isset($_SESSION['user_id'])) {
             include $src_path . 'add-item.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'delete-cat':
+        if (isset($_SESSION['user_id'])) {
+            include $src_path . 'delete-cat.php';
         } else {
             echo "<h1>404 Not Found</h1>";
         }

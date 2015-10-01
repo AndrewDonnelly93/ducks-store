@@ -8,7 +8,7 @@ $(function() {
     }
     if ($(".delete").length) {
         $('.delete').on('click', function () {
-            return confirm('Хотите удалить этот товар?');
+            return confirm('Вы уверены?');
         });
     }
 });

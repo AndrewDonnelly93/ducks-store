@@ -84,7 +84,8 @@ class Products {
     public static function deleteProduct($id, Connection $connection) {
         echo "Товар удаляется<br>";
         $stmt = $connection->prepare('DELETE FROM `products` WHERE `id` = :id');
-        $stmt->execute([':id' => $id]);
+        $result = $stmt->execute([':id' => $id]);
+        return $result;
     }
 
     public static function getCurrentId(Connection $connection) {
@@ -102,6 +103,12 @@ class Products {
         $result = $uploadProducts->execute([
            ":image_id" => $image_id
         ]);
+        return $result;
+    }
+
+    public static function deleteCategoryId($category_id,Connection $connection) {
+        $deleteCategoryId = $connection->prepare('UPDATE `products` SET `category_id` = null WHERE `category_id` = :category_id');
+        $result = $deleteCategoryId->execute([":category_id" => $category_id]);
         return $result;
     }
 }
