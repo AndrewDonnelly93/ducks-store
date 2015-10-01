@@ -2,16 +2,14 @@
 $id = $_GET["id"];
 include_once $src_path . 'autoload.php';
 $connection = new \App\DB\Connection('root', '');
-$getProdInfo = $connection->prepare('SELECT * FROM `products` WHERE `id` = '.$id);
-$getProdInfo->execute();
-$product = $getProdInfo->fetch(PDO::FETCH_ASSOC);
+$product = \App\DB\Products::get($id,$connection);
 ?>
 
-<form style="margin-bottom: 20px" action="admin.php?view=edit&id=<?=$id?>" enctype="multipart/form-data" method="post">
+<form style="margin-bottom: 20px" action="/edit/?id=<?=$id?>" enctype="multipart/form-data" class='default-form edit-form' method="post">
     <p>Введите название товара:</p>
-    <input style="width: 50%" type="text" name="title" value="<?=$product['title']?>" required>
+    <input type="text" name="title" value="<?=$product['title']?>" required>
     <p>Введите описание товара:</p>
-    <textarea style="width: 50%" name="description" rows="3" required><?=$product['description']?> </textarea>
+    <textarea name="description" rows="3" required><?=$product['description']?> </textarea>
     <p>Введите цену товара:</p>
     <input type="number" name="price" value="<?=$product['price']?>" required>
     <p>Выберите категорию товара:</p>
@@ -30,18 +28,14 @@ $product = $getProdInfo->fetch(PDO::FETCH_ASSOC);
     <input name="userfile" type="file" />
     <input type="submit" value="Отправить">
 </form>
+<div class="item-gallery edit">
+    <img src="<?=$product['photo']?>" alt="уточка">
+</div>
+<?php
+    if (!empty($product['updated_at']) && ($product['updated_at'] != "0000-00-00 00:00:00")) {
+        echo "<p style='margin-bottom: 5px;'>Товар изменен: ".$product['updated_at']."</p>";
+    }
+?>
 
-
-<a class="btn" href="admin.php?view=catalog" style="margin-right: 20px">В каталог</a>
-
-<script>
-    /*document.addEventListener("DOMContentLoaded", function(event) {
-        console.log(document.querySelectorAll(".edited").length);
-
-        if (document.querySelectorAll(".edited").length) {
-            if(window.location.href.substr(-2) !== "?r") {
-                window.location = window.location.href + "?r";
-            }
-        }
-    });*/
-</script>
+<a class="btn" href="/catalog" style="margin-right: 20px">В каталог</a>
+<a href="<?=\App\Utilities\Options::URL ?>/add" class='add-item adm-btn'>Добавить товар</a>

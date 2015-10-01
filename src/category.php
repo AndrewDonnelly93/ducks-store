@@ -1,15 +1,21 @@
 <?php
-
+$flag = false;
+$products = [];
 if ((isset($_GET['id']))&&(is_numeric($_GET['id']))) {
     $id = $_GET['id'];
+    $category = \App\DB\Categories::get($id, $connection);
+    if (!$category) {
+        $flag = true;
+        $category['title'] = "Неизвестная категория";
+    }
+    if (!$flag) {
+        $products = \App\DB\Products::getByCategory($category['id'], $connection);
+    }
 } else {
-    die("Нет такой категории - id");
+    $flag = true;
+    $category['title'] = "Неизвестная категория";
 }
-$category = \App\DB\Categories::get($id, $connection);
-if (!$category ) {
-    die("Нет такой категории - db");
-}
-$products = \App\DB\Products::getByCategory($category['id'],$connection);
+
 include_once __DIR__ . '/templates/_header.php';
 include_once __DIR__ . '/templates/_top_menu.php';
 
@@ -23,7 +29,7 @@ include_once __DIR__ . '/templates/_top_menu.php';
                     <div class="catalog">
                         <!-- хлебные крошки -->
                         <div class="breadcrumbs">
-                            <a href="../index.html">Магазин</a>
+                            <a href="<?= \App\Utilities\Options::URL ?>">Магазин</a>
                             <p><?=$category['title']?></p>
                         </div>
                         <div class="row clearfix">
@@ -32,7 +38,16 @@ include_once __DIR__ . '/templates/_top_menu.php';
                             if (!empty($products)) {
                                 include_once __DIR__ . '/templates/_pagination-cat.php';
                             } else {
-                                echo "<h2>В данной категории нет товаров</h2>";
+                                if (!$flag)
+                                {
+                                    echo "<h2>В данной категории нет товаров</h2>";
+                                } else
+                                {
+                                    echo "<h2>Нет такой категории</h2>";
+                                }
+                                if (isset($_SESSION['user_id'])) {
+                                    echo "<a href=".\App\Utilities\Options::URL."/add class='add-item adm-btn'>Добавить товар</a>";
+                                }
                             }
                             ?>
                         </div>

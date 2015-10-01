@@ -9,7 +9,11 @@ if (isset($_GET['item']) && is_numeric($_GET['item'])) {
             $value = 1;
         }
         setcookie("products[{$product['id']}]",$value,time() + 3*24*60*60,"/");
+    } else {
+        echo "Такой утки не найдено";
     }
+} else {
+    echo "Такой утки не найдено";
 }
 ob_start();
 header( 'Location: /', true);

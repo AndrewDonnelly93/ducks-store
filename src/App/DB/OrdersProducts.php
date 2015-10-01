@@ -1,17 +1,17 @@
 <?php
 namespace App\DB;
 use App\DB\Connection;
-class OrdersProducts extends \App\DB\Orders {
+class OrdersProducts extends Orders {
 
     private $order_id;
 
-    public function __construct(Connection $connection) {
-        parent::__construct($connection);
+    public function __construct(Connection $connection,$name,$address,$email,$addition) {
+        parent::__construct($connection,$name,$address,$email,$addition);
         $productsInCart = $_COOKIE['products'];
         $cost = 0;
         $this->order_id = parent::getCurrentId($connection);
         foreach ($productsInCart as $id => $value) {
-            $product = \App\DB\Products::get($id,$connection);
+            $product = Products::get($id,$connection);
             $cost +=  $product['price'] * $value;
             $insProd = $connection->prepare('INSERT INTO `ordersproducts`
                 (`order_id`, `product_id`, `amount`)

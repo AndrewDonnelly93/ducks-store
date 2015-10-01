@@ -5,14 +5,17 @@ class Orders {
 
     protected $cost;
 
-    public function __construct(Connection $connection)
+    public function __construct(Connection $connection,$name,$address,$email,$addition = null)
     {
         $now = new \DateTime();
         $stmt = $connection->prepare('INSERT INTO `orders`
-            (`customer_id`, `order_date`)
-            VALUES (:customer_id, :order_date)');
+            (`customer_name`,`address`,`email`,`addition`,`order_date`)
+            VALUES (:customer_name, :address, :email, :addition, :order_date)');
         $result = $stmt->execute([
-            ":customer_id" => $_SESSION['user_id'],
+            ":customer_name" => $name,
+            ":address" => $address,
+            ":email" => $email,
+            ":addition" => $addition,
             ":order_date" => $now->format("Y-m-d H:i:s")
         ]);
     }
@@ -35,12 +38,12 @@ class Orders {
         $order_id = $order_id_stmt->fetch(\PDO::FETCH_ASSOC);
         return $order_id['order_id'];
     }
-
+/*
     public static function getByCustomer($customer_id, Connection $connection) {
         $statement = $connection->prepare('SELECT *
  FROM `orders` WHERE `customer_id` = :customer_id');
         $statement->execute([':customer_id' => $customer_id]);
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
-
+*/
 }

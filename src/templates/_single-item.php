@@ -13,8 +13,8 @@
                     </div>-->
                     <!-- хлебные крошки -->
                     <div class="breadcrumbs item-breadcrumbs">
-                        <a href="../index.html">Магазин</a>
-                        <a href="catalog.html">Мини - утки</a>
+                        <a href="<?=\App\Utilities\Options::URL?>">Магазин</a>
+                        <a href="<?=\App\Utilities\Options::URL.'/catalog'?>">Мини - утки</a>
                     </div>
                     <?php
                         include_once __DIR__ . "/_item-page.php";

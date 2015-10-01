@@ -8,7 +8,14 @@
                 <div class="catalog">
                     <div class="row clearfix">
                         <?php
-                          include_once __DIR__ . '/_pagination.php';
+                        if (!empty($products)) {
+                                include_once __DIR__ . '/_pagination.php';
+                        } else {
+                            echo "<h2>Список товаров пуст</h2>";
+                            if (!isset($_SESSION['user_id'])) {
+                                echo "<a href=".\App\Utilities\Options::URL."/add class='add-item adm-btn'>Добавить товар</a>";
+                            }
+                        }
                         ?>
                     </div>
                 </div>

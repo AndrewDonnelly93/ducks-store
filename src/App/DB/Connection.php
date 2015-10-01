@@ -10,7 +10,7 @@ class Connection {
                 $password
             );
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die($e->getMessage());
         }
     }

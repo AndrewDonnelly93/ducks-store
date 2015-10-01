@@ -25,7 +25,7 @@ include_once __DIR__ . '/templates/_top_menu.php';
         <div class="catalog">
             <!-- хлебные крошки -->
             <div class="breadcrumbs">
-                <a href="../index.html">Магазин</a>
+                <a href="/">Магазин</a>
                 <p>Мои заказы</p>
             </div>
             <div class="row clearfix">

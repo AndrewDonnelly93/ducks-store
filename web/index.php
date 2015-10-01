@@ -1,7 +1,6 @@
 <?php
-
+require_once __DIR__.'/../vendor/autoload.php';
 $src_path = __DIR__ . '/../src/';
-
 include_once $src_path . 'autoload.php';
 session_start();
 
@@ -14,6 +13,20 @@ switch ($view) {
     case 'main':
         include_once $src_path . 'main.php';
         break;
+    case 'exit':
+        if (isset($_SESSION['user_id'])) {
+            include_once $src_path . 'exit.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'edit':
+        if (isset($_SESSION['user_id'])) {
+            include_once $src_path . 'edit.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
     case 'category':
         include $src_path . 'category.php';
         break;
@@ -24,16 +37,45 @@ switch ($view) {
         include $src_path . 'single-item.php';
         break;
     case 'cart/add':
-        include $src_path . 'cart_add.php';
+        if (!isset($_SESSION['user_id'])) {
+            include $src_path . 'cart_add.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
         break;
     case 'cart':
-        include $src_path . 'cart.php';
+        if (!isset($_SESSION['user_id'])) {
+            include $src_path . 'cart.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'create_order':
+        if (!isset($_SESSION['user_id'])) {
+            include $src_path . 'create_order.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
         break;
     case 'login':
         include $src_path . 'login.php';
         break;
     case 'orders':
         include $src_path . 'orders.php';
+        break;
+    case 'delete':
+        if (isset($_SESSION['user_id'])) {
+            include $src_path . 'delete.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'add':
+        if (isset($_SESSION['user_id'])) {
+            include $src_path . 'add-item.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
         break;
     default:
         echo "<h1>Oooops. 404</h1>";
