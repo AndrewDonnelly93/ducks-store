@@ -1,5 +1,7 @@
 <?php
-if (isset($_GET['page'])) {
+$count_of_items_on_page = 9;
+$count = ceil(count($products) / $count_of_items_on_page);
+if ((isset($_GET['page'])&&(is_numeric($_GET['page'])) && ($_GET['page'] <= $count))) {
     $page = $_GET['page'];
 } else {
     $page = "1";
@@ -16,15 +18,6 @@ for ($i = 1; $i < $count+1; $i++) {
 }
 }
 
-switch ($page) {
-    case (!is_numeric($page)):
-        $page = "1";
-        break;
-    default:
-        break;
-}
-    $count_of_items_on_page = 9;
-    $count = ceil(count($products) / $count_of_items_on_page);
    if ($page <= $count) {
         $offset = (intval($page)-1)*$count_of_items_on_page;
        if (isset($_SESSION['user_id'])) {

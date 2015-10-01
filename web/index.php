@@ -71,6 +71,20 @@ switch ($view) {
             echo "<h1>404 Not Found</h1>";
         }
         break;
+    case 'orders':
+        if (isset($_SESSION['user_id'])) {
+            include $src_path . 'orders.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'order':
+        if (isset($_SESSION['user_id'])) {
+            include $src_path . 'single-order.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
     case 'create_order':
         if (!isset($_SESSION['user_id'])) {
             include $src_path . 'create_order.php';

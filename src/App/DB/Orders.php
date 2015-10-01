@@ -38,6 +38,21 @@ class Orders {
         $order_id = $order_id_stmt->fetch(\PDO::FETCH_ASSOC);
         return $order_id['order_id'];
     }
+
+    public static function getIdAndDate(Connection $connection) {
+        $sql = 'SELECT `order_id`,`order_date` FROM `orders`';
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function getById($order_id, Connection $connection) {
+        $statement = $connection->prepare('SELECT *
+ FROM `orders` WHERE `order_id` = :order_id');
+        $statement->execute([':order_id' => $order_id]);
+        return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
 /*
     public static function getByCustomer($customer_id, Connection $connection) {
         $statement = $connection->prepare('SELECT *

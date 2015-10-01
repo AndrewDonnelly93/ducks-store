@@ -1,15 +1,22 @@
 <?php
-function OrderTable($ordersProducts = array(),$connection){
+use \Respect\Validation\Validator as v;
+function OrderTable($ordersProducts,$connection){
     foreach ($ordersProducts as $arrayNumber => $orders_data) {
         echo "<tr class='product'>";
         foreach ($orders_data as $data_key => $data_value) {
+            //echo "data-key: ".$data_key." data-value: ".$data_value."<br>";
             switch ($data_key) {
                 case "product_id":
                     $product = \App\DB\Products::get($data_value, $connection);
-                    printProduct($product);
+                    $flag = v::arr()->notEmpty()->validate($product);
+                    if ($flag) {
+                        printProduct($product);
+                    } else {
+                        echo "<td class='deleted-product' colspan='2'>Товар удален из базы данных</td>";
+                    }
                     break;
                 case "amount":
-                    echo "<td data-amount='$data_value'>$data_value</td></tr>";
+                    echo "<td data-amount='$data_value'>".$data_value."</td></tr>";
                     break;
                 default:
                     break;
@@ -33,26 +40,19 @@ function printProduct($product) {
     }
 }
 
-function printOrders($orders,$connection) {
-    echo "<table>";
-    foreach ($orders as $order => $orders_data) {
-        echo "<tr>";
-        foreach ($orders_data as $order_data => $value) {
+function printOrder($order,$connection) {
+    echo "<table class='order-info'>";
+        foreach ($order as $order_data => $value) {
             switch ($order_data) {
-                case 'order_id':
-                    echo "<td><span>Заказ № </span> $value</td>";
-                    $ordersProducts[] = \App\DB\OrdersProducts::getProductsInOrder($connection,$value);
-                    echo "<tr class='product-data'><td>Название</td><td>Стоимость</td><td>Количество</td></tr>";
-                    OrderTable(end($ordersProducts),$connection);
-                    break;
                 case 'cost':
                     echo "<td><span>Общая стоимость: </span>$value</td>";
                     break;
                 case 'order_date':
                     echo "<td><span>Дата заказа: </span> $value</td>";
                     break;
+                default:
+                    break;
             }
         }
-    }
     echo "</table>";
 }

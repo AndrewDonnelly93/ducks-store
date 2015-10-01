@@ -574,3 +574,110 @@ aside a.adm-btn {
 .categories.list:last-child tbody td {
     border-bottom: 1px solid #fffb93;
 }
+
+.order-list {
+    width: 400px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.order-list td:first-child {
+    width: 100px;
+}
+
+.order-list td:last-child {
+    width: 300px;
+}
+
+.order-list .adm-btn {
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+}
+
+.order-list thead td {
+    border: 1px solid #0ea7c9;
+    height: 25px;
+    line-height: 25px;
+}
+
+.order-list tbody td {
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #fffb93;
+    border-top: 0;
+}
+
+.order-list:last-child tbody td {
+    border-bottom: 1px solid #fffb93;
+}
+
+.row.orders {
+    text-align: center;
+}
+
+.row.orders p {
+    margin-bottom: 5px;
+}
+
+.customer td {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: middle;
+    padding: 3px;
+}
+
+.customer thead td,
+.products-table thead td {
+    border: 1px solid #0ea7c9;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.customer tbody td,
+.products-table tbody td{
+    font-size: 12px;
+    line-height: 14px;
+    border: 1px solid #fffb93;
+    border-top: 0;
+}
+
+.customer, .customer tr,
+.products-table, .products-table tr {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    width: 697px;
+}
+
+.customer td:first-child {
+    width: 100px;
+}
+
+.customer td:nth-child(2) {
+    width: 247px;
+}
+
+.customer td:nth-child(3) {
+    width: 200px;
+}
+
+.customer td:nth-child(4) {
+    width: 150px;
+}
+
+.info {
+    margin: 5px;
+}
+
+.products-table {
+
+}
+
+.order-info span {
+    color: #0ea7c9;
+}

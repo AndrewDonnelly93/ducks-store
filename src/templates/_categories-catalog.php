@@ -1,5 +1,7 @@
 <?php
-if (isset($_GET['page'])) {
+$count_of_items_on_page = 9;
+$count = ceil(count($categories) / $count_of_items_on_page);
+if ((isset($_GET['page'])&&(is_numeric($_GET['page'])) && ($_GET['page'] <= $count))) {
     $page = $_GET['page'];
 } else {
     $page = "1";
@@ -16,15 +18,6 @@ function showCatalog($count, $page) {
     }
 }
 
-switch ($page) {
-    case (!is_numeric($page)):
-        $page = "1";
-        break;
-    default:
-        break;
-}
-$count_of_items_on_page = 9;
-$count = ceil(count($categories) / $count_of_items_on_page);
 if ($page <= $count) {
     $offset = (intval($page)-1)*$count_of_items_on_page;
     include_once "_table-categories.php";
@@ -42,7 +35,7 @@ if ($page <= $count) {
         }
     }
 } else {
-    echo "Список товаров пуст";
+    echo "Список пуст";
 }
 
 if (count($categories) > $count_of_items_on_page) {

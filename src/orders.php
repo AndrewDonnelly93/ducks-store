@@ -3,42 +3,23 @@ include_once __DIR__ . '/templates/_header.php';
 include_once __DIR__ . '/templates/_top_menu.php';
 ?>
 
-<script>
-    $(function()  {
-        if ($(".product").length) {
-            $(".product").each(function() {
-                var price = $(this).find("td:nth-child(2)").data('price');
-                var amount = $(this).find("td:nth-child(3)").data('amount');
-                var data = price*amount;
-                $(this).find("td:nth-child(2)").html(data);
-            });
-        }
-    });
-</script>
-
 <section>
 <div class="container">
 	<div class="row clearfix">
 	    <!-- боковое меню -->
-        <?php include_once 'templates/_menu.php'; ?>
+        <?php include_once '/templates/_menu.php'; ?>
     <div class="column column9">
         <div class="catalog">
             <!-- хлебные крошки -->
             <div class="breadcrumbs">
                 <a href="/">Магазин</a>
-                <p>Мои заказы</p>
+                <p>Список заказов</p>
             </div>
-            <div class="row clearfix">
-
+            <div class="row orders clearfix">
+<p>Чтобы увидеть информацию по заказу, щелкните по ID или времени создания</p>
 <?php
-if (isset($_SESSION['user_id'])) {
-    include_once __DIR__ . '/print_orders.php';
-    $orders = \App\DB\Orders::getByCustomer($_SESSION['user_id'],$connection);
-    $ordersProducts = [];
-    printOrders($orders,$connection);
-} else {
-    echo "Авторизуйтесь, чтобы увидеть список заказов";
-}
+    $orders = \App\DB\Orders::getIdAndDate($connection);
+    include_once '/templates/_order-list-pagination.php';
 ?>
 </div>
 			</div>
