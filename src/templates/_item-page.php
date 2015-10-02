@@ -25,7 +25,6 @@
         <p class="price"><?=$product['price'];?> P</p>
         <div class="order-btns">
             <a href="<?= \App\Utilities\Options::URL ?>/cart/add/?item=<?=$product['id']?>" class="btn-basket">В Корзину</a>
-            <a href="" class="btn-click">Купить в 1 клик</a>
         </div>
     </div>
 </div>

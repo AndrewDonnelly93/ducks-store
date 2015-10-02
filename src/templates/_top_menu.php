@@ -5,10 +5,10 @@
 		<!-- меню -->
 		<nav>
 			<ul>
-				<li><a href="">О Компании</a></li>
+				<li><a href="../company">О Компании</a></li>
 				<li><a href="../catalog">Каталог</a></li>
-				<li><a href="">Доставка и оплата</a></li>
-				<li><a href="">Контакты</a></li>
+				<li><a href="../pay-del">Доставка и оплата</a></li>
+				<li><a href="../contacts">Контакты</a></li>
 			</ul>
 		</nav>
         <div class="cart-info">

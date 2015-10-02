@@ -13,6 +13,12 @@ switch ($view) {
     case 'main':
         include_once $src_path . 'main.php';
         break;
+    case 'company':
+        include_once $src_path . 'company.php';
+        break;
+    case 'contacts':
+        include_once $src_path . 'contacts.php';
+        break;
     case 'exit':
         if (isset($_SESSION['user_id'])) {
             include_once $src_path . 'exit.php';
@@ -40,6 +46,9 @@ switch ($view) {
         } else {
             echo "<h1>404 Not Found</h1>";
         }
+        break;
+    case 'pay-del':
+        include $src_path . 'payment-delivery.php';
         break;
     case 'edit-cat-all':
         if (isset($_SESSION['user_id'])) {

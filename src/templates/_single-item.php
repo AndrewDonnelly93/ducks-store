@@ -6,11 +6,6 @@
                 <!-- боковое меню -->
                 <?php include_once '_menu.php'; ?>
                 <div class="catalog column column9">
-                  <!--  <div class="order-status ">
-                        <div class="row clearfix">
-                            <p></p>
-                        </div>
-                    </div>-->
                     <!-- хлебные крошки -->
                     <div class="breadcrumbs item-breadcrumbs">
                         <a href="<?=\App\Utilities\Options::URL?>">Магазин</a>
