@@ -23,8 +23,12 @@
         </p>
         <!-- цена -->
         <p class="price"><?=$product['price'];?> P</p>
-        <div class="order-btns">
-            <a href="<?= \App\Utilities\Options::URL ?>/cart/add/?item=<?=$product['id']?>" class="btn-basket">В Корзину</a>
-        </div>
+        <form action="<?= \App\Utilities\Options::URL ?>/cart/add/?item=<?=$product['id']?>" method="post" class="order-btns">
+            <input type="submit" class="btn-basket" value="В Корзину">
+            <label for="amount" class="amount-label">Количество:</label>
+            <div class="decrement"><span>-</span></div><!--
+            --><input type="text" value="1" min="1" name="amount" class="amount"><!--
+             --><div class="increment"><span>+</span></div>
+        </form>
     </div>
 </div>

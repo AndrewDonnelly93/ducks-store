@@ -73,6 +73,20 @@ switch ($view) {
             echo "<h1>404 Not Found</h1>";
         }
         break;
+    case 'delete_cart':
+        if (!isset($_SESSION['user_id'])) {
+            include_once $src_path . 'delete_cart.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
+    case 'del-item-from-cart':
+        if (!isset($_SESSION['user_id'])) {
+            include_once $src_path . 'del-item-from-cart.php';
+        } else {
+            echo "<h1>404 Not Found</h1>";
+        }
+        break;
     case 'cart':
         if (!isset($_SESSION['user_id'])) {
             include $src_path . 'cart.php';
@@ -103,9 +117,6 @@ switch ($view) {
         break;
     case 'login':
         include $src_path . 'login.php';
-        break;
-    case 'orders':
-        include $src_path . 'orders.php';
         break;
     case 'delete':
         if (isset($_SESSION['user_id'])) {

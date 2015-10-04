@@ -26,32 +26,6 @@ AUTO_INCREMENT = 7;
 -- ---------------------------------------------------------
 
 
--- CREATE TABLE "category" ---------------------------------
-CREATE TABLE `category` ( 
- )
-CHARACTER SET = utf8
-COLLATE = utf8_general_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- ---------------------------------------------------------
-
-
--- CREATE TABLE "feedbacks" --------------------------------
-CREATE TABLE `feedbacks` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
-	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
-	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
-	`text` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
-	`created_at` DateTime NULL DEFAULT CURRENT_TIMESTAMP,
-	 PRIMARY KEY ( `id` )
- )
-CHARACTER SET = utf8
-COLLATE = utf8_general_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 4;
--- ---------------------------------------------------------
-
-
 -- CREATE TABLE "images" -----------------------------------
 CREATE TABLE `images` ( 
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
@@ -63,7 +37,7 @@ CREATE TABLE `images` (
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 20;
+AUTO_INCREMENT = 36;
 -- ---------------------------------------------------------
 
 
@@ -81,7 +55,7 @@ CREATE TABLE `orders` (
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 8;
+AUTO_INCREMENT = 14;
 -- ---------------------------------------------------------
 
 
@@ -112,21 +86,7 @@ CREATE TABLE `products` (
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 42;
--- ---------------------------------------------------------
-
-
--- CREATE TABLE "properties" -------------------------------
-CREATE TABLE `properties` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
-	`title` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
-	`type` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	 PRIMARY KEY ( `id` )
- )
-CHARACTER SET = utf8
-COLLATE = utf8_general_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 65;
 -- ---------------------------------------------------------
 
 
@@ -150,13 +110,6 @@ INSERT INTO `categories`(`id`,`title`,`created_at`,`updated_at`) VALUES ( '3', '
 INSERT INTO `categories`(`id`,`title`,`created_at`,`updated_at`) VALUES ( '4', 'Японские утки', '2015-10-01 12:29:14', '2015-10-01 11:43:22' );
 INSERT INTO `categories`(`id`,`title`,`created_at`,`updated_at`) VALUES ( '5', 'Английские утки', '2015-10-01 12:29:14', '2015-10-01 12:29:24' );
 INSERT INTO `categories`(`id`,`title`,`created_at`,`updated_at`) VALUES ( '6', 'Зеленые утки', '2015-10-01 12:29:14', '2015-10-02 10:47:25' );
--- ---------------------------------------------------------
-
-
--- Dump data of "feedbacks" --------------------------------
-INSERT INTO `feedbacks`(`id`,`name`,`email`,`text`,`created_at`) VALUES ( '1', 'trtq', 'trt', 'gfg', '2015-09-21 21:23:06' );
-INSERT INTO `feedbacks`(`id`,`name`,`email`,`text`,`created_at`) VALUES ( '2', 'trtq', 'trt', 'gfg', '2015-09-21 21:26:19' );
-INSERT INTO `feedbacks`(`id`,`name`,`email`,`text`,`created_at`) VALUES ( '3', 'andrew', 'fdfsf', 'dfs', '2015-09-21 21:27:06' );
 -- ---------------------------------------------------------
 
 
@@ -196,20 +149,53 @@ INSERT INTO `images`(`id`,`photo`,`created_at`,`updated_at`) VALUES ( '35', '../
 
 
 -- Dump data of "orders" -----------------------------------
-INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '5', 'Сердюков Александр Андреевич', 'Санкт-Петербург, ул. Красного Курсанта, 25', 'alexweb@gmail.ru', '', '314', '2015-09-29 12:08:50' );
-INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '6', 'Андреев Георгий Леонидович', 'Санкт-Петербург, Невский пр., 22', 'andreev@mail.ru', '', '210', '2015-10-01 10:13:37' );
-INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '7', 'Федорова Надежда', 'пр. Науки, 30', 'fedorovana@gmail.com', '', '229', '2015-10-01 10:17:53' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '8', 'Рожков Игорь', 'Невский, 22', 'rozhkov@gmail.com', '', '1418', '2015-10-03 19:55:19' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '9', 'Петухов Александр Геннадьевич', 'Петергофское шоссе, 5', 'petuhovag@mail.ru', '', '983', '2015-10-03 20:07:16' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '10', 'Сердюкова Валентина', 'проспект Энтузиастов, 16', 'serduykovava@ya.ru', '', '1220', '2015-10-03 20:11:03' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '11', 'Ерохин Андрей', 'проспект Луначарского, 60', 'erohinas@gmail.com', '', '780', '2015-10-03 20:13:05' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '12', 'Викторова Алевтина Григорьевна', 'Староневский проспект, 82', 'alevtina73@mail.ru', '', '637', '2015-10-03 20:15:13' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '13', 'Григорьева Екатерина', 'Гатчинская, 34-11', 'katya_grigoryeva@gmail.com', '', '1323', '2015-10-03 20:20:13' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '14', 'Андреева Надежда', 'Казанская ул., 34', 'andreevana@mail.ru', '', '917', '2015-10-04 10:39:52' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '15', 'Сергиенко Валерий Георгиевич', 'Ропшинская, 12', 'valera95@mail.ru', '', '652', '2015-10-04 10:42:02' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '16', 'Буян Алексей', 'просп. Большевиков, 24', 'buyanal@gmail.com', '', '1011', '2015-10-04 10:44:10' );
+INSERT INTO `orders`(`order_id`,`customer_name`,`address`,`email`,`addition`,`cost`,`order_date`) VALUES ( '17', 'Алексеенко Борис Федорович', 'Косой переулок, 23-4', 'borya54@mail.ru', '', '906', '2015-10-04 10:46:35' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "ordersproducts" ---------------------------
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '5', '3', '1' );
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '5', '2', '1' );
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '5', '42', '1' );
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '6', '3', '1' );
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '6', '6', '1' );
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '7', '36', '1' );
-INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '7', '6', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '8', '63', '3' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '8', '60', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '8', '61', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '9', '60', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '9', '64', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '9', '44', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '9', '48', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '9', '49', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '10', '60', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '10', '63', '3' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '10', '62', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '11', '47', '4' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '11', '45', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '12', '40', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '12', '45', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '12', '44', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '13', '63', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '13', '57', '3' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '13', '54', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '13', '51', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '14', '63', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '14', '53', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '14', '43', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '15', '46', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '15', '42', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '15', '41', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '16', '54', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '16', '61', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '16', '63', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '17', '6', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '17', '49', '2' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '17', '51', '1' );
+INSERT INTO `ordersproducts`(`order_id`,`product_id`,`amount`) VALUES ( '17', '52', '1' );
 -- ---------------------------------------------------------
 
 

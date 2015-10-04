@@ -79,6 +79,11 @@ header{
 nav,.logo{
     float: left;
 }
+
+nav {
+    margin-right: 10px;
+}
+
 nav li,nav li a,.btn-basket {
     display: inline-block;
 }
@@ -288,6 +293,7 @@ footer{
      margin-top: 10px; }
 
  .catalog-items {
+     margin-top: 10px;
      z-index: 2;
      display: block;
      float: none;
@@ -355,6 +361,11 @@ header .container {
     padding-top: 5px;
 }
 
+.cart-info a {
+    text-decoration: none;
+    color: white;
+}
+
 .cart-info p {
     display: inline-block;
     color: red;
@@ -362,7 +373,14 @@ header .container {
 
 .exit {
     display: inline-block;
-    margin-left: 3px;
+    margin-left: 5px;
+}
+
+.adm-btn.order {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
 }
 
 .products {
@@ -398,6 +416,19 @@ header .container {
     color: #0ea7c9;
     text-decoration: none;
     background: yellow;
+    line-height: 30px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+
+.delete-cart {
+    color: #0ea7c9;
+    background: red;
+    margin-left: 10px;
+    text-decoration: none;
     line-height: 30px;
     display: inline-block;
     -webkit-box-sizing: border-box;
@@ -719,6 +750,136 @@ input, textarea {
     outline-width: 0;
 }
 
+.amount-label {
+    display: inline-block;
+}
+
+.amount {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.increment,.decrement {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #fffb93;
+    margin-top: 12px;
+    position: relative;
+    top: 1px;
+    font-size: 16px;
+    border: 1px solid #000000;
+}
+
+.increment {
+    border-left: 0;
+}
+
+.decrement {
+    border-right: 0;
+}
+
+.increment:hover,
+.decrement:hover {
+    cursor: pointer;
+}
+
+.order-btns .btn-basket {
+    border: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.create-order-form input {
+    border: 0;
+}
+
+.create-order-form .increment,
+.create-order-form .decrement {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 0;
+}
+
+.increment span,
+.decrement span {
+    position: relative;
+    top: -2px;
+}
+
+.increment span {
+    top: -1px;
+}
+
+.create-order-form .amount {
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #000;
+}
+
+.product-table td {
+    line-height: 30px;
+    height: 30px;
+}
+
+.amount.cart {
+    margin-left: 0;
+}
+
+.product-table td:first-child,
+.product-table th:first-child{
+    width: 300px;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+}
+
+.product-table td:nth-child(2),
+.product-table th:nth-child(2) {
+    width: 100px;
+}
+
+.product-table td:nth-child(3),
+.product-table th:nth-child(3) {
+    width: 140px;
+}
+
+.product-table td:nth-child(4),
+.product-table th:nth-child(4) {
+    width: 140px;
+}
+
+.product-table .delete-item,
+.product-table .delete {
+    color: red;
+}
+
+.product-table .delete-item {
+    position: relative;
+    top: -1px;
+}
+
+.product-table .delete {
+    font-weight: bold;
+    display: block;
+    width: 25px;
+    height: 31px;
+    line-height: 31px;
+}
 
 
 

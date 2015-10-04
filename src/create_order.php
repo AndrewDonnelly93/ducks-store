@@ -55,7 +55,8 @@ if (!empty($_POST) && isset($_COOKIE['products']) && !empty($_COOKIE['products']
         foreach ($_COOKIE['products'] as $id => $value) {
             setcookie("products[{$id}]", "", time() - 3600, "/");
         }
-        echo "<p>Поздравляем! Заказ оформлен</p>";
+        echo "<p class='order-created'>Поздравляем! Заказ оформлен</p>";
+        echo "<a href=".\App\Utilities\Options::URL."../catalog class='adm-btn order'>В каталог</a>";
         header('Refresh:0 url=/');
     } else {
         echo "<div class=order-cost> Общая стоимость заказа: <span>$orderCost</span> рублей</div>";

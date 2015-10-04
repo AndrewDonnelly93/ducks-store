@@ -31,7 +31,7 @@
              else {
                  echo "<a href=". \App\Utilities\Options::URL."../login ".">Войти</a >";
                  echo "<a class='user-link cart' href=".\App\Utilities\Options::URL."../cart"."/>Корзина</a>";
-                 echo "<div class=products>Товаров в корзине: ".$count = getProductsInCart()."</div>";
+                 echo "<div class=products>Товаров в корзине: <span>".$count = getProductsInCart()."</span></div>";
             }
             ?>
         </div>

@@ -13,7 +13,7 @@ include_once __DIR__ . '/templates/_top_menu.php';
                         <!-- хлебные крошки -->
                         <div class="breadcrumbs">
                             <a href="/">Магазин</a>
-                            <p>Удаление категории</p>
+                            <p>Удаление товара из корзины</p>
                         </div>
                         <div class="row clearfix">
                             <?php
@@ -25,17 +25,14 @@ include_once __DIR__ . '/templates/_top_menu.php';
                             } else {
                                 $id = 'error';
                             }
-                            $category = \App\DB\Categories::get($id,$connection);
-                            $flag = v::arr()->notEmpty()->validate($category);
+                            $product = \App\DB\Products::get($id,$connection);
+                            $flag = v::arr()->notEmpty()->validate($product);
                             if (!$flag) {
-                                echo "Такой категории не существует";
+                                echo "Такого товара не существует";
                             } else {
-                                $deleteCategory = \App\DB\Categories::deleteCategory($id,$connection);
-                                if ($deleteCategory) {
-                                    $deleteCategoryId = \App\DB\Products::deleteCategoryId($id,$connection);
-                                }
+                                setcookie("products[{$id}]", "", time() - 3600, "/");
                                 // Back to previous page
-                                header('Location: '. \App\Utilities\Options::URL .'/edit-cat-all');
+                                header('Location: '. \App\Utilities\Options::URL .'/cart');
                             }
                             ?>
                         </div>
