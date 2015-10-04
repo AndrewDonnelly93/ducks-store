@@ -12,11 +12,14 @@ Studio https://www.valentina-db.com/en/developer/database/download-valentina-dat
 * Открыть клиент для работы с SQL, создать базу под названием duck_store 
 на локальном сервере (127.0.0.1) и загрузить туда дамп базы данных ducks.sql из репозитория.
 * Прописать локальные хосты (далее указаны действия для Windows ):
-** Открыть файл hosts (C:\Windows\System32\Drivers\hosts) и внести следующие изменения:
-> #	127.0.0.1       localhost
-> #	::1             localhost
-> 127.0.0.1     ducks-store.local
-** Открыть файл (..dir\Xampp\Apache\conf\extra\httpd-vhosts.conf) и внести следующие изменения:
+
+Открыть файл hosts (C:\Windows\System32\Drivers\hosts) и внести следующие изменения:
+```
+# 127.0.0.1       localhost
+# ::1             localhost
+127.0.0.1     ducks-store.local
+```
+Открыть файл (..dir\Xampp\Apache\conf\extra\httpd-vhosts.conf) и внести следующие изменения:
 ```
     NameVirtualHost *:80
 	<VirtualHost *:80>
