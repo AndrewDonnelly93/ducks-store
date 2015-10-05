@@ -42,7 +42,7 @@ Studio https://www.valentina-db.com/en/developer/database/download-valentina-dat
 	   </Directory>
 	 </VirtualHost>
 ```	 
-* После этого можно открывать в браузере сайт ducks-store.local и пользоваться им.
+* Внимание: "D:\Xampp\htdocs" заменяется на директорию установки папки ducks-store. После этого можно открывать в браузере сайт ducks-store.local и пользоваться им.
 
 ## Клиентская часть
 * На главной странице отображаются 6 последних созданных уточек.
