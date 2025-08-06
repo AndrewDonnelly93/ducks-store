@@ -1,79 +1,172 @@
-# Интернет-магазин резиновых уточек
+🦆 Ducks Store (October 2015)
+A vintage PHP/MySQL e-commerce site for selling rubber ducks.
 
-## Для установки необходимо:
+🛠 Installation Instructions
+1. Clone the Repository
+Download the repository to your local machine:
 
-* Скачать репозиторий на локальный компьютер.
-* Скачать на компьютер локальный веб-сервер, например,
-дистрибутив Apache XAMPP - https://www.apachefriends.org/ru/download.html . 
-* Скачать на компьютер клиент для работы с базой данных MySQL (например, Valentina
-Studio https://www.valentina-db.com/en/developer/database/download-valentina-database-adk) или воспользоваться встроенным 
-в XAMPP PHP https://www.phpmyadmin.net/ . Для запуска последнего нужно нажать кнопку Admin на контрольной
-панели XAMPP рядом с сервисом Apache.
-* Открыть клиент для работы с SQL, создать базу под названием duck_store 
-на локальном сервере (127.0.0.1) и загрузить туда дамп базы данных ducks.sql из репозитория.
-* Прописать локальные хосты (далее указаны действия для Windows ):
+bash
+Copy
+Edit
+git clone https://github.com/AndrewDonnelly93/ducks-store.git
+2. Set Up a Local Web Server
+Install a local web server stack such as XAMPP.
 
-Открыть файл hosts (C:\Windows\System32\Drivers\hosts) и внести следующие изменения:
-```
-# 127.0.0.1       localhost
-# ::1             localhost
-127.0.0.1     ducks-store.local
-```
-Открыть файл (..dir\Xampp\Apache\conf\extra\httpd-vhosts.conf) и внести следующие изменения:
-```
-    NameVirtualHost *:80
-	<VirtualHost *:80>
-		DocumentRoot "D:\Xampp\htdocs\ducks-store\web"
-		ServerName localhost
-	</VirtualHost>
+3. Set Up MySQL Access
+Use either:
 
-	<VirtualHost *:80>
-		ServerAdmin webmaster@blog.local
-	   DocumentRoot "D:\Xampp\htdocs\ducks-store\web"
-		ServerName ducks-store.local
-		ServerAlias www.ducks-store.local
-		ErrorLog "D:\Xampp\htdocs\ducks-store\logs\error.log"
-		 CustomLog "D:\Xampp\htdocs\ducks-store\logs\access.log" combined
-	   <Directory "D:\Xampp\htdocs\ducks-store\web">
-		 Require all granted
-		AllowOverride All
-		Order allow,deny
-		Allow from all
-	   </Directory>
-	 </VirtualHost>
-```	 
-* Внимание: "D:\Xampp\htdocs" заменяется на директорию установки папки ducks-store. После этого можно открывать в браузере сайт ducks-store.local и пользоваться им.
+Valentina Studio: Download
 
-## Клиентская часть
-* На главной странице отображаются 6 последних созданных уточек.
-* Картинка является ссылкой на страницу отдельного товара.
-* Просмотреть каталог можно на одноименной вкладке или воспользоваться поиском по категории, выбрав одну из 
-них в боковом меню. 
-* Положить товар в корзину можно из каталога или на странице товара (на последней можно указать количество).
-Максимальное возможное количество - 99. После нажатия кнопки "В корзину" происходит возврат на предыдущую страницу, 
-если клиент поддерживает установку $_SERVER['HTTP_REFERER'] или на главную страницу в противном случае.
-* На странице "корзина"	можно просмотреть выбранные товары, изменить количество или удалить отдельные единицы,
-а также очистить корзину. Также там содержится ссылка на форму для создания заказа.
-* В форме создания заказа нужно указать ФИО, адрес и e-mail (эти поля обязательные) и возможно написать примечание к заказу.
+phpMyAdmin: Included with XAMPP. You can launch it via the Admin button next to Apache in the XAMPP control panel.
 
-## Админская часть
-Войти в админскую часть сайта можно, введя логин admin и пароль 123.
-### Каталог: 
-в этой части  представлена таблица продуктов, каждый содержит ссылку на редактирование товара и удаление.
-* Редактирование: 
-Содержит форму, в которой вводится название, цена товара, его описание, а также выбирается категория. Можно загружать файлы
-графических форматов: 'gif','png' ,'jpg', 'jpeg'.
-После отправки формы происходит возврат на страницу с редактированием.
-* Удаление:
-Товар удаляется из базы данных, происходит перенаправление на страницу товаров.
-* Добавление товаров:
-Форма, аналогичная редактированию. После отправки производится перенаправление на страницу с редактированием товара.
+4. Create the Database
+Open your SQL client (e.g., phpMyAdmin).
 
-### Категории:
-* При нажатии на кнопку редактировать выводится список категорий. Можно отредактировать категории, добавить новые или удалить их из списка.
-* При удалении категории ее ID удаляется из всех привязанных к ней товаров, и теперь в таблице товаров их категория становится равной значению "Не указана".
+Create a new database named:
 
-### Заказы:
-* При нажатии на кнопку "Заказы" выводится таблица товаров. В ней указаны ID заказа и дата его создания. При нажатии на одно из этих полей
-можно просмотреть заказ. 
-* На странице заказа указаны контактные данные лица, оформившего его, а также таблица заказанных товаров.
+nginx
+Copy
+Edit
+duck_store
+Import the ducks.sql dump file located in the root of the repository.
+
+5. Configure Local Hosts (Windows Example)
+a) Update your hosts file:
+Edit this file:
+
+makefile
+Copy
+Edit
+C:\Windows\System32\drivers\etc\hosts
+Add the following line:
+
+lua
+Copy
+Edit
+127.0.0.1   ducks-store.local
+b) Update Apache Virtual Hosts
+Open:
+
+Copy
+Edit
+XAMPP\apache\conf\extra\httpd-vhosts.conf
+Add the following:
+
+apache
+Copy
+Edit
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+    DocumentRoot "D:/XAMPP/htdocs/ducks-store/web"
+    ServerName localhost
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@ducks-store.local
+    DocumentRoot "D:/XAMPP/htdocs/ducks-store/web"
+    ServerName ducks-store.local
+    ServerAlias www.ducks-store.local
+    ErrorLog "D:/XAMPP/htdocs/ducks-store/logs/error.log"
+    CustomLog "D:/XAMPP/htdocs/ducks-store/logs/access.log" combined
+
+    <Directory "D:/XAMPP/htdocs/ducks-store/web">
+        Require all granted
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+⚠️ Replace D:/XAMPP/htdocs/ducks-store with the actual path to where you cloned the project.
+
+6. Launch the Site
+Visit:
+
+arduino
+Copy
+Edit
+http://ducks-store.local
+in your browser to open the store.
+
+🛍 Client Features
+Homepage displays the 6 most recently added ducks
+
+Each duck image links to its individual product page
+
+Use the "Catalog" tab or sidebar search by category to browse items
+
+Products can be added to the cart from both the catalog and product pages (max quantity: 99)
+
+After adding to the cart, the user is returned to the previous page (if $_SERVER['HTTP_REFERER'] is supported), or the homepage
+
+Cart page allows:
+
+Updating quantity
+
+Removing individual items
+
+Clearing the entire cart
+
+Proceeding to checkout
+
+🧾 Checkout Form
+Fields: Full name, address, and email (required)
+
+Optional: Add a note to the order
+
+🔐 Admin Panel
+Access the admin panel at:
+
+pgsql
+Copy
+Edit
+http://ducks-store.local/admin
+Login credentials:
+
+makefile
+Copy
+Edit
+Username: admin
+Password: 123
+🧱 Product Management
+View table of all products
+
+Each product has options to edit or delete
+
+Editing a Product
+Update name, price, description, category
+
+Upload image files (gif, png, jpg, jpeg)
+
+Redirects back to the edit page after submission
+
+Deleting a Product
+Product is removed from the database
+
+Redirects to the product listing page
+
+Adding New Products
+Similar form as editing
+
+Redirects to edit page after submission
+
+🗂 Category Management
+Edit, add, or delete product categories
+
+When a category is deleted:
+
+It is removed from all associated products
+
+Those products are marked as "Unspecified"
+
+📦 Order Management
+Orders page shows a table of all orders
+
+Columns: Order ID and creation date
+
+Clicking an order shows full details:
+
+Customer contact info
+
+List of ordered products
+
