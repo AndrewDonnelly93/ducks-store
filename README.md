@@ -6,9 +6,8 @@ A vintage PHP/MySQL e-commerce site for selling rubber ducks.
 Download the repository to your local machine:
 
 bash
-Copy
-Edit
 git clone https://github.com/AndrewDonnelly93/ducks-store.git
+
 2. Set Up a Local Web Server
 Install a local web server stack such as XAMPP.
 
@@ -25,8 +24,6 @@ Open your SQL client (e.g., phpMyAdmin).
 Create a new database named:
 
 nginx
-Copy
-Edit
 duck_store
 Import the ducks.sql dump file located in the root of the repository.
 
